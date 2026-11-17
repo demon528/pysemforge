@@ -1,0 +1,14 @@
+build/
+dist/
+*.egg-info/
+src/*.egg-info/
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.png
+*.pdf
+*.ipynb_checkpoints/
+.env

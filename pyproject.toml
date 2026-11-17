@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pysemforge"
+version = "0.2.0"
+description = "lavaan-style CFA and measurement invariance in Python: joint multigroup ML, configural/metric/scalar ladder, partial invariance, Matplotlib path diagrams"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "pysemforge contributors" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Intended Audience :: Science/Research",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.11",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    # semopy supplies the estimation backend. It is a hard requirement in 0.1.x:
+    # the pure-Python reference estimator is not yet numerically usable, and
+    # silently falling back to it produced all-zero parameters.
+    "semopy>=2.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff",
+    "mypy",
+    "build",
+    "twine",
+    "jupyter",
+]
+
+[project.urls]
+Homepage = "https://github.com/demon528/pysemforge"
+Repository = "https://github.com/demon528/pysemforge.git"
+Issues = "https://github.com/demon528/pysemforge/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pysemforge"]
+
+[tool.hatch.build.targets.sdist]
+# Keep previously built distributions, caches and loose figures out of the sdist.
+exclude = [
+    "dist",
+    "build",
+    "*.whl",
+    "*.tar.gz",
+    "*.egg-info",
+    ".pytest_cache",
+    "*.png",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
