@@ -1,30 +1,36 @@
 name: Release
 
+# Builds a distributable from an existing tag and attaches the artefacts to the
+# run. Publishing to PyPI is done manually with twine, so that the released
+# files are exactly the ones that were tested locally.
+
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing git tag to build (e.g. v0.2.0)"
+        required: true
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Build
+
+      - name: Build and check
         run: |
+          python -m pip install --upgrade pip
           pip install build twine
           python -m build
-      - name: Check dist
-        run: twine check dist/*
-      - name: Publish to TestPyPI
-        uses: pypa/gh-action-pypi-publish@v1
+          twine check dist/*
+
+      - uses: actions/upload-artifact@v4
         with:
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-          repository-url: https://test.pypi.org/legacy/
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          name: dist-${{ inputs.tag }}
+          path: dist/*
