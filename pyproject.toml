@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "pysemforge"
 version = "0.2.0"
-description = "lavaan-style CFA and measurement invariance in Python: joint multigroup ML, configural/metric/scalar ladder, partial invariance, Matplotlib path diagrams"
+description = "PySemForge: lavaan-style CFA and measurement invariance in Python; joint multigroup ML, configural/metric/scalar ladder, partial invariance, Matplotlib path diagrams"
 readme = "README.md"
 license = { text = "MIT" }
 authors = [

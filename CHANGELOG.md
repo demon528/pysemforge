@@ -2,6 +2,11 @@
 
 ## [0.2.0] - 2026-11-18
 
+The software is presented as **PySemForge** in documentation, figures and the
+accompanying paper. The distribution name, the import name and the repository
+address stay lower-case `pysemforge`, because PyPI project names are fixed at
+first upload and cannot be renamed.
+
 The multigroup layer is now a real estimator. Verified against lavaan 0.6-20 on R 4.2.3
 (``cfa(..., group = "school", group.equal = ...)``) on the Holzinger-Swineford
 data; every statistic below matches lavaan to four decimals.

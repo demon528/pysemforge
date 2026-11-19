@@ -1,4 +1,7 @@
-# pysemforge
+# PySemForge
+
+> **PySemForge** is the name of the software; on PyPI and in Python code it is the
+> lower-case `pysemforge` (`pip install pysemforge`, `import pysemforge`).
 
 **Structural Equation Modeling for Python — closing the R-Python gap for behavioral and econometric modeling.**
 
@@ -6,11 +9,11 @@
 
 ---
 
-## Why pysemforge?
+## Why PySemForge?
 
 Python has mature estimation backends (e.g. semopy), but still lacks a single package that combines:
 
-| Capability | R (lavaan + semTools) | Python (semopy / pySEM) | **pysemforge** |
+| Capability | R (lavaan + semTools) | Python (semopy / pySEM) | **PySemForge** |
 |---|---|---|---|
 | lavaan-style syntax | ✅ | partial | ✅ |
 | CFA / path / mediation | ✅ | partial | ✅ |
